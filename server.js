@@ -1,4 +1,5 @@
 const express = require('express') 
+const bodyParser = require('body-parser')
 const app = express() 
 
 const profile = {
@@ -6,7 +7,12 @@ const profile = {
   email: '[reducted]',
   url: 'http://azat.co'
 }
+
+app.use(bodyParser.json())
+
+
 app.get('/profile', (req, res)=>{
+  console.log(req.body)
   res.send(profile)
 })
 app.post('/profile', (req, res) => {
